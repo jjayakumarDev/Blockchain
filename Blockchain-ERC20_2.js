@@ -68,20 +68,9 @@ const getEntriesInFile = () => {
 
 const go = async() => {
   let balance = await getBalanceOf(account1)
-  console.log(((5/balance)*100))
-  console.log((balance))
-
-  let fivePercentOfBalance = 5/balance
-  console.log(fivePercentOfBalance)
-  let addressList = getEntriesInFile()
-  const addressCount = addressList.length
-  const amountToBeSent = fivePercentOfBalance/addressCount
 
   try {
-    for (const addressFromFile of addressList){
-      //await transferFunds(account1, addressFromFile, amountToBeSent)
-      console.log(amountToBeSent)
-    }
+      await transferFunds(account1, account2, 1)
   } catch (error) {
       console.log("transaction error"+error.message);
       throw error;
