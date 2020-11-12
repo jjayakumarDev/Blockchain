@@ -38,7 +38,7 @@ const getEntriesInFile = () => {
 })
 }
 const returnValues = async() => {
-//console.log(await getTotalSupply())
+console.log(await getTotalSupply())
 //console.log(await getName())
 //console.log(await getDecimals())
 //console.log(await getSymbol())

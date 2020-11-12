@@ -66,6 +66,11 @@ const amountDistribution = async(numOfDiv, perBal) => {
   return amtToDist
 }
 
+const getTotalSupply = async() => {
+  let totSupply = await contract.methods.totalSupply().call()
+  return totSupply
+}
+
 const getEntriesInFile = () => {
   const fs = require('fs')
   try {
@@ -84,7 +89,8 @@ const go = async() => {
   //console.log("number of address "+numOfAddress)
   let balance = await getBalanceOf(account1)
   //console.log("balance "+balance)
-  let percentageOfBal = await percentageOfBalance(1, balance)
+  let totalSupply = await getTotalSupply()
+  let percentageOfBal = await percentageOfBalance(1, totalSupply)
  // console.log("% to send "+percentageOfBal)
   let amtToDist = await amountDistribution(numOfAddress, percentageOfBal)
  // console.log("amount to send "+amtToDist)
