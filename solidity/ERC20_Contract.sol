@@ -6,8 +6,8 @@ function allowance(address owner, address spender) external view returns (uint25
 function transfer(address recipient, uint256 amount) external returns (bool);
 function approve(address spender, uint256 amount) external returns (bool);
 function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
-function percentageOfBalance(uint percentage, uint256 balance) external returns (uint256);
-function amountDistribution(uint numberOfDivition, uint256 percentageOfBal) external returns (uint256);
+function percentageOfBalance(uint percentage, uint256 balance) external view returns (uint256);
+function amountDistribution(uint numberOfDivition, uint256 percentageOfBal) external view returns (uint256);
 event Transfer(address indexed from, address indexed to, uint256 value);
 event Approval(address indexed owner, address indexed spender, uint256 value);
 }
@@ -101,10 +101,11 @@ _allowances[sender][recipient] = amount;
 emit Approval(sender, recipient, amount);
 return true;
 }
-function percentageOfBalance(uint percentage, uint256 balance) public virtual override returns (uint256){
-    return (percentage/balance) * 100;
+function percentageOfBalance(uint percentage, uint256 balance) public view override returns (uint256){
+    balance = percentage * balance / 100;
+    return balance;
 }
-function amountDistribution(uint numberOfDivition, uint256 percentageOfBal) public virtual override returns (uint256){
+function amountDistribution(uint numberOfDivition, uint256 percentageOfBal) public view override returns (uint256){
     return percentageOfBal/numberOfDivition;
 }
 
