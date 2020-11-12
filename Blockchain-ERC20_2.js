@@ -12,8 +12,9 @@ const privateKey2 = Buffer.from('d75ef594cbe78d7e72a28854ba086df603559a19c6882ac
 
 
 // Read the deployed contract - get the addresss from Etherscan
-const contractAddress = '0xe8a344bed7e3d765a3f01eaf1c26db2c2075663b'
-const contractABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"_totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"tokenOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}]
+// new contract 0x98A084B392Df62ab47af919C32d1ed0E8f57d64c, 0x9Ed7b73CE66c4182825266596b6E481b0412Acdc, 0xF416c233dFDb0666A441C323C04EA541429A2E31
+const contractAddress = '0xF416c233dFDb0666A441C323C04EA541429A2E31'
+const contractABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"_totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"numberOfDivition","type":"uint256"},{"internalType":"uint256","name":"percentageOfBal","type":"uint256"}],"name":"amountDistribution","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"percentage","type":"uint256"},{"internalType":"uint256","name":"balance","type":"uint256"}],"name":"percentageOfBalance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"tokenOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}]
 
 const contract = new web3.eth.Contract(contractABI, contractAddress)
 
@@ -25,7 +26,7 @@ const getTransactionCount = async(account) => {
 const sendTransaction = async(raw) => {
   return await web3.eth.sendSignedTransaction(raw)
 }
-const transferFunds = async(account1, account2, amount) => {
+const transferFunds = async(account1, toAddress, amount) => {
 
   let txCount = await getTransactionCount(account1)
 
@@ -36,7 +37,7 @@ const transferFunds = async(account1, account2, amount) => {
     gasLimit: web3.utils.toHex(50000), // uses about 36,000 gas so add some buffer
     gasPrice: web3.utils.toHex(web3.utils.toWei('30', 'gwei')),
     to: contractAddress,
-    data: contract.methods.transferFrom(account1, account2, amount).encodeABI()
+    data: contract.methods.transferFrom(account1, toAddress, amount).encodeABI()
   }
 
   const tx = new Tx(txObject, {chain:'ropsten', hardfork: 'petersburg'})
@@ -55,6 +56,16 @@ const getBalanceOf = async(account) => {
   return balanceOf
 }
 
+const percentageOfBalance = async(percentage, balance) => {
+  let percentageBal = await contract.methods.percentageOfBalance(percentage, balance).call()
+  return percentageBal
+}
+
+const amountDistribution = async(numOfDiv, perBal) => {
+  let amtToDist = await contract.methods.amountDistribution(numOfDiv, perBal).call()
+  return amtToDist
+}
+
 const getEntriesInFile = () => {
   const fs = require('fs')
   try {
@@ -67,10 +78,21 @@ const getEntriesInFile = () => {
 }
 
 const go = async() => {
+  let addressList = await getEntriesInFile()
+  //console.log("addresses "+addressList)
+  let numOfAddress = addressList.length
+  //console.log("number of address "+numOfAddress)
   let balance = await getBalanceOf(account1)
-
+  //console.log("balance "+balance)
+  let percentageOfBal = await percentageOfBalance(1, balance)
+ // console.log("% to send "+percentageOfBal)
+  let amtToDist = await amountDistribution(numOfAddress, percentageOfBal)
+ // console.log("amount to send "+amtToDist)
   try {
-      await transferFunds(account1, account2, 1)
+    for(const toAddress of addressList){
+      await transferFunds(account1, toAddress, amtToDist)
+      //console.log(toAddress+" "+amtToDist)
+    }
   } catch (error) {
       console.log("transaction error"+error.message);
       throw error;
