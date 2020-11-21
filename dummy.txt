@@ -1,8 +1,8 @@
 {
-    "name": "nci_lab",
+    "name": "blockchain_lab",
     "version": "1.0.0",
     "description": "image for connecting to web3 network using infura",
-    "author": "Eoin Connolly",
+    "author": "Jayashathiskumar",
     "license": "Apache 2.0",
     "main": "handlers.js",
     "keywords": [
