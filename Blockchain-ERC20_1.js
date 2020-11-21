@@ -51,5 +51,5 @@ const totalSupply = async() => {
     console.log('retval is: ' + retval)
     return retval
 }
-//module.exports = { returnValues, totalSupply }
-    returnValues()
+module.exports = { returnValues, totalSupply }
+    //returnValues()

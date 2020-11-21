@@ -104,6 +104,6 @@ const go = async() => {
       throw error;
   }
 }
-
-go()
+module.exports = {transferFunds, getTotalSupply, getBalanceOf}
+//go()
 
