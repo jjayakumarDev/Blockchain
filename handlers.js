@@ -1,7 +1,7 @@
 const express = require('express')
 let contract = require('./Blockchain-ERC20_2.js')
 const app = express()
-
+//change the private key as a dynamic field
 app.use(express.json())
 
 app.get('/', async (req,res) => {
@@ -16,6 +16,11 @@ app.get('/supply', async (req,res) => {
 app.get('/balance', async (req,res) => {
     res.send(await contract.getBalanceOf(req.query.address))
     console.log(res.status)
+})
+
+app.get('/transferFromList', async (req,res) => {
+  res.send(await contract.trasferFromList())
+  console.log(res.status)
 })
 
 app.post('/transfer', async (req,res) =>{
