@@ -1,34 +1,40 @@
 const express = require('express')
-let contract = require('./Blockchain-ERC20_2.js')
+let contract = require('./Blockchain-ERC20.js')
 const app = express()
 //change the private key as a dynamic field
 app.use(express.json())
 
 app.get('/', async (req,res) => {
-  res.send(await contract.getTotalSupply())
+  if(req.header('x-api-key') === 'qD62BOed63YQdNK7p1pt54h96bq1c638yc5I81eg'){
+    res.send(await contract.getTotalSupply())
+  }
 })
 
 app.get('/supply', async (req,res) => {
-  res.send(await contract.getTotalSupply())
-  console.log(res.status)
+  if(req.header('x-api-key') === 'qD62BOed63YQdNK7p1pt54h96bq1c638yc5I81eg'){
+    res.send(await contract.getTotalSupply())
+  }
 })
 
 app.get('/balance', async (req,res) => {
+  if(req.header('x-api-key') === 'qD62BOed63YQdNK7p1pt54h96bq1c638yc5I81eg'){
     res.send(await contract.getBalanceOf(req.query.address))
-    console.log(res.status)
+  }
 })
 
 app.get('/transferFromList', async (req,res) => {
-  res.send(await contract.trasferFromList())
-  console.log(res.status)
+  if(req.header('x-api-key') === 'qD62BOed63YQdNK7p1pt54h96bq1c638yc5I81eg'){
+    res.send(await contract.trasferFromList())
+  }
 })
 
 app.post('/transfer', async (req,res) =>{
+  if(req.header('x-api-key') === 'qD62BOed63YQdNK7p1pt54h96bq1c638yc5I81eg'){
     var transfer_from = req.body.account_from;
     var transfer_to = req.body.account_to;
     var amount = req.body.amount;
     res.send(await contract.transferFunds(transfer_from, transfer_to, amount))
-    console.log(res.status)
+  }
 }
 )
 

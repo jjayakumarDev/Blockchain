@@ -3,10 +3,10 @@ var Tx = require('ethereumjs-tx').Transaction
 
 const web3 = new Web3('https://ropsten.infura.io/v3/d1f1e6b09ce64f2989bff65d6562a99e')
 
-const account1 = '0xD271aF68605E84Ef193a6Fa14c6664bA752DAb14' // Your account address 1
-//const ProfAccount = '0x9b14eee99808bab2a4c6492d37b4d771f75b7631' // Professor's acocunt
+// Primary Account Address
+const account1 = '0xD271aF68605E84Ef193a6Fa14c6664bA752DAb14'
 
-//change the private key as a dynamic field
+// Private key
 const privateKey1 = Buffer.from('29da4c6de1cb2973db62159aedf6596c9cb93afebbcf2c18922ede1f46133ada', 'hex')
 
 // Read the deployed contract - get the addresss from Etherscan
@@ -17,13 +17,17 @@ const contractABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constru
 
 const contract = new web3.eth.Contract(contractABI, contractAddress)
 
+// get Transaction Count
 const getTransactionCount = async(account) => {
   return await web3.eth.getTransactionCount(account)
 }
 
+// send Transaction
 const sendTransaction = async(raw) => {
   return await web3.eth.sendSignedTransaction(raw)
 }
+
+// Transfer funds
 const transferFunds = async(account1, toAddress, amount) => {
 
   let txCount = await getTransactionCount(account1)
@@ -49,27 +53,31 @@ const transferFunds = async(account1, toAddress, amount) => {
   return minedTransaction.transactionHash;
 }
 
-// async methods
+// getbalance
 const getBalanceOf = async(account) => {
   let balanceOf = await contract.methods.balanceOf(account).call()
   return balanceOf
 }
 
+// get given percntage of the balance
 const percentageOfBalance = async(percentage, balance) => {
   let percentageBal = await contract.methods.percentageOfBalance(percentage, balance).call()
   return percentageBal
 }
 
+// async method - get required distrubusion amount for transfer
 const amountDistribution = async(numOfDiv, perBal) => {
   let amtToDist = await contract.methods.amountDistribution(numOfDiv, perBal).call()
   return amtToDist
 }
 
+// get total supply
 const getTotalSupply = async() => {
   let totSupply = await contract.methods.totalSupply().call()
   return totSupply
 }
 
+// get account addresses from text file
 const getEntriesInFile = () => {
   const fs = require('fs')
   try {
@@ -81,6 +89,7 @@ const getEntriesInFile = () => {
   }
 }
 
+// Transfer tokens from the list of addresses given
 const trasferFromList = async() => {
   let addressList = await getEntriesInFile()
   let numOfAddress = addressList.length
@@ -89,10 +98,12 @@ const trasferFromList = async() => {
   let percentageOfBal = await percentageOfBalance(5, balance)
   let amtToDist = await amountDistribution(numOfAddress, percentageOfBal)
   try {
-    let transactionHash = [];
+    let transactionHash = "";
     for(const toAddress of addressList){
       //console.log(toAddress+" "+amtToDist)
-      transactionHash = await transferFunds(account1, toAddress, amtToDist)
+      let hash = await transferFunds(account1, toAddress, amtToDist)+", "
+      //let hash = "test"
+      transactionHash = transactionHash+hash;
     }
     console.log(transactionHash)
     return "Transaction Hash Returned :"+transactionHash;
@@ -102,26 +113,5 @@ const trasferFromList = async() => {
   }
 }
 
-const go = async() => {
-  let addressList = await getEntriesInFile()
-  let numOfAddress = addressList.length
-  let balance = await getBalanceOf(account1)
-  let totalSupply = await getTotalSupply()
-  let percentageOfBal = await percentageOfBalance(5, balance)
-  let amtToDist = await amountDistribution(numOfAddress, percentageOfBal)
-  try {
-    let transactionHash = [];
-    for(const toAddress of addressList){
-      //console.log(toAddress+" "+amtToDist)
-      transactionHash = await transferFunds(account1, toAddress, amtToDist)
-    }
-    //console.log(transactionHash)
-    //return transactionHash;
-  } catch (error) {
-      console.log("transaction error"+error.message);
-      throw error;
-  }
-}
 module.exports = {trasferFromList, transferFunds, getTotalSupply, getBalanceOf}
-//go()
 
