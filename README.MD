@@ -15,14 +15,15 @@
 ### Steps to Run the Code on Deployed URL
 
 1. Deployed REST API end point url: http://block-env.eba-3xtjemn5.us-east-1.elasticbeanstalk.com/
-2. Use the 'transferFromList' at the end of the url, http://block-env.eba-3xtjemn5.us-east-1.elasticbeanstalk.com/transferFromList
-3. Once the transactions has been finished then all transaction hash will be sent as a response
+2. Use the 'transferFromList' at the end of the url, http://block-env.eba-3xtjemn5.us-east-1.elasticbeanstalk.com/transferFromList , (Secret Authentication key has to be added in the header)
+3. Header key: x-api-key, value: qD62BOed63YQdNK7p1pt54h96bq1c638yc5I81eg
+4. Once the transactions has been finished then all transaction hash will be sent as a response
 
 ### Project Details
 
 1. This project is to create a Ethereum smart contract to do the basic token distribution operation on ropsten test network
 2. I have added the solidity code in the repository for versioning. This contract includes, get balance, get total supply tokens, transfer, percentage calculation and distribution.
-3. I have deployed this contract on Etherscan ropsten test network. Contract address: 0x9615F02580Fb3558f8C51195Ca998FB1d2E3c036
+3. I have deployed this contract on Etherscan ropsten test network. Contract address: 0x7edA20c51e0831B4C278e63f16c049859192AfbF
 4. The name of the contract is my student id and name "x20154810_Jayashathiskumar", for easy to identifying the student name and id.
 5. Once the transaction has been started then the contract will get the balace tokens, get 5% of the balance tokens, divide the 5% of the tokens by number of accounts in the accounts.txt file, then distribute the tokens.
 6. As a result transaction hash ids will be a response separated by commas.
