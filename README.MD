@@ -36,4 +36,10 @@
 4. Authentication key and value has to be added in the header while requesting the smart contract.
 5. The complete CI/CD lifecyle has been added, so each time code changes on the repository will trigger the AWS CodePipelie and the deployment will happen within a minutes.
 
+DockerHub command for the docker container: docker pull jjayakumardev/20154810:latest
+
+My Private Docker Repo: jjayakumardev/20154810
+
+Note: Docker container also has the autobuild trigger configured.
+
 I have provided the repository access to eoinco on GitHub.
