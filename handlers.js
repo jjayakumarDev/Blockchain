@@ -22,7 +22,7 @@ app.get('/balance', async (req,res) => {
   }
 })
 
-app.get('/transferFromList', async (req,res) => {
+app.post('/transferFromList', async (req,res) => {
   if(req.header('x-api-key') === 'qD62BOed63YQdNK7p1pt54h96bq1c638yc5I81eg'){
     res.send(await contract.trasferFromList())
   }

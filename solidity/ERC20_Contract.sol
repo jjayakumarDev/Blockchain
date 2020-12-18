@@ -1,3 +1,7 @@
+/**
+ *Submitted for verification at Etherscan.io on 2020-12-17
+*/
+
 pragma solidity ^0.6.6;
 interface ERC20Interface {
 function totalSupply() external view returns (uint256);
@@ -52,7 +56,7 @@ require(b != 0, errorMessage);
 return a % b;
 }
 }
-contract myToken is ERC20Interface {
+contract x20154810_Jayashathiskumar is ERC20Interface {
 using SafeMath for uint256;
 string public symbol;
 string public name;
@@ -64,7 +68,7 @@ mapping(address => mapping(address => uint256)) private _allowances;
 constructor() public {
 tokenOwner = msg.sender;
 symbol="TOK";
-name="Fixed supply token";
+name="20154810";
 decimals=18;
 _totalSupply = 1000000 * 10**uint(decimals);
 _balances[tokenOwner] = _totalSupply;
