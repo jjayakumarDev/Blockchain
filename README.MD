@@ -41,5 +41,3 @@ DockerHub command for the docker container: docker pull jjayakumardev/20154810:l
 My Private Docker Repo: jjayakumardev/20154810
 
 Note: Docker container also has the autobuild trigger configured.
-
-I have provided the repository access to eoinco on GitHub.
